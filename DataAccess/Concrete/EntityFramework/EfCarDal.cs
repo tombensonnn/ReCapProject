@@ -17,7 +17,17 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var addedCar = context.Entry(entity);
                 addedCar.State = EntityState.Added;
-                context.SaveChanges();
+
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Bu arabayı ekleyemezsiniz! Lütfen başka id ile deneyin.");
+                }
             }
         }
 
@@ -27,7 +37,16 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var deletedCar = context.Entry(entity);
                 deletedCar.State = EntityState.Deleted;
-                context.SaveChanges();
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Böyle bir araba bulunmamaktadır.");
+                }
             }
         }
 
