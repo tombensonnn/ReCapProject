@@ -12,69 +12,38 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            Car car1 = new Car() {Id = 3 , BrandId = 4 , ColorId = 3 , ModelYear = "2012", DailyPrice = 180000 ,  Description = "For Sale"};
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            Car car2 = new Car() {Id = 4 , BrandId = 3 , ColorId = 3 , ModelYear = "2011" , DailyPrice = 170000  , Description = "For Sale"};
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
 
 
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandName);
+            }
+
+            Console.WriteLine("--------------------------------------------");
+
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.ColorName);
+            }
+
+            Console.WriteLine("--------------------------------------------");
 
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(car.Description);
             }
 
+            Console.WriteLine("--------------------------------------------");
 
-            //Console.WriteLine("Araba işlem simülasyonuna hoşgeldiniz.\nAşağıda yapabileceğiniz işlemler numaralara göre sıralanmıştır. Lütfen yapmak istediğiniz işlemi giriniz\n");
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine("{0} {1} {2} {3}",car.BrandName,car.CarName,car.ColorName,car.DailyPrice);
+            }
 
-            //Console.WriteLine("1 - EKLEME\n2 - SİLME\n3 - GÜNCELLEME\n4 - LİSTELEME\n5 - MARKA ID'YE GÖRE LİSTELEME\n6 - RENK ID'YE GÖRE LİSTELEME\n");
 
-            //Console.WriteLine("Lütfen yapmak istediğiniz işlem numarasını seçiniz");
-
-            //int option = Convert.ToInt32(Console.ReadLine());
-
-            //while (true)
-            //{
-            //    if (option == 1)
-            //    {
-            //        carManager.Add(car2);
-            //    }
-
-            //    else if (option == 2)
-            //    {
-            //        carManager.Delete(car2);
-            //    }
-
-            //    else if (option == 3)
-            //    {
-            //        carManager.Update(car2);
-            //    }
-
-            //    else if (option == 4)
-            //    {
-            //        foreach (var car in carManager.GetAll())
-            //        {
-            //            Console.WriteLine(car.Description);
-            //        }
-            //    }
-
-            //    else if (option == 5)
-            //    {
-            //        carManager.GetCarsByBrandId(car1.BrandId);
-            //    }
-
-            //    else if (option == 6)
-            //    {
-            //        carManager.GetCarsByColorId(car1.ColorId);
-            //    }
-
-            //    else
-            //    {
-            //        Console.WriteLine("Yanlış bir seçim yaptınız.");
-            //    }
-
-            //    break;
-
-            //}
         }
     }
 }

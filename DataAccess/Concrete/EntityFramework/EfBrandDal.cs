@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Core.DataAccess.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,52 +10,8 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfBrandDal : IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand,CarProjectContext>, IBrandDal
     {
-        public void Add(Brand entity)
-        {
-            using (CarProjectContext context = new CarProjectContext())
-            {
-                var addedBrand = context.Entry(entity);
-                addedBrand.State = EntityState.Added;
-                context.SaveChanges();
-            }
-        }
-
-        public void Delete(Brand entity)
-        {
-            using (CarProjectContext context = new CarProjectContext())
-            {
-                var deletedBrand = context.Entry(entity);
-                deletedBrand.State = EntityState.Deleted;
-                context.SaveChanges();
-            }
-        }
-
-        public Brand Get(Expression<Func<Brand, bool>> filter)
-        {
-            using (CarProjectContext context = new CarProjectContext())
-            {
-                return context.Set<Brand>().SingleOrDefault(filter);
-            }
-        }
-
-        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
-        {
-            using (CarProjectContext context = new CarProjectContext())
-            {
-                return filter == null ? context.Set<Brand>().ToList() : context.Set<Brand>().Where(filter).ToList();
-            }
-        }
-
-        public void Update(Brand entity)
-        {
-            using (CarProjectContext context = new CarProjectContext())
-            {
-                var updatedBrand = context.Entry(entity);
-                updatedBrand.State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
+        
     }
 }
