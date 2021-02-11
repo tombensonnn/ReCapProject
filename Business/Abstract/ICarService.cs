@@ -1,4 +1,5 @@
 ﻿using Core.Business;
+using Core.Utilities.Results.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -9,9 +10,9 @@ namespace Business.Abstract
 {
     public interface ICarService : IBaseService<Car>
     {
-        List<Car> GetCarsByBrandId(int brandId);
-        List<Car> GetCarsByColorId(int colorId);
-        List<CarDetailsDto> GetCarDetails();
+        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
+        IDataResult<List<Car>> GetCarsByColorId(int colorId);
+        IDataResult<List<CarDetailsDto>> GetCarDetails();
 
     }
 }

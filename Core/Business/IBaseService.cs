@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace Core.Business
 {
     public interface IBaseService<T> where T: IEntity
     {
-        List<T> GetAll();
-        T GetById(int id);
-        void Add(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        IDataResult<List<T>> GetAll();
+        IDataResult<T> GetById(int id);
+        IResult Add(T entity);
+        IResult Delete(T entity);
+        IResult Update(T entity);
     }
 }
