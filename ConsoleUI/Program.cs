@@ -10,49 +10,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
 
-            ColorManager colorManager = new ColorManager(new EfColorDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            Customer customer1 = new Customer() {CompanyName = "Company 3"};
 
+            customerManager.Add(customer1);
 
-            //foreach (var brand in brandManager.GetAll())
-            //{
-            //    Console.WriteLine(brand.BrandName);
-            //}
+            var customers = customerManager.GetAll().Data;
 
-            //Console.WriteLine("--------------------------------------------");
-
-            //foreach (var color in colorManager.GetAll())
-            //{
-            //    Console.WriteLine(color.ColorName);
-            //}
-
-            //Console.WriteLine("--------------------------------------------");
-
-
-            var result = carManager.GetCarDetails();
-
-            if (result.Success == true)
+            foreach (var customer in customers)
             {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.BrandName + "/" + car.CarName + "/" + car.ColorName + "/" + car.DailyPrice);
-                }
+                Console.WriteLine(customer.CompanyName + "/" + customer.UserId);
             }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-
-            //Console.WriteLine("--------------------------------------------");
-
-            //foreach (var car in carManager.GetCarDetails())
-            //{
-            //    Console.WriteLine("{0} {1} {2} {3}",car.BrandName,car.CarName,car.ColorName,car.DailyPrice);
-            //}
-
 
         }
     }
