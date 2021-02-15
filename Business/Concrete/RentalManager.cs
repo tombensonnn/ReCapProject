@@ -42,12 +42,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.Listed);
         }
 
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.Id == id));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.Id == id),Messages.Listed);
         }
 
         public IResult Update(Rental entity)

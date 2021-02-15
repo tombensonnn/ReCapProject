@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfRentalDal : EfEntityRepositoryBase<Rental,CarProjectContext> , IEntityRepository<Rental>
+    public class EfRentalDal : EfEntityRepositoryBase<Rental,CarProjectContext> , IRentalDal
     {
         public List<RentalDetailsDto> GetRentalDetails(Expression<Func<Rental,bool>> filter = null)
         {
