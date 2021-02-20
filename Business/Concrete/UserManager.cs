@@ -24,11 +24,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User entity)
         {
-            if (entity.FirstName.Length < 2 && entity.LastName.Length < 3)
-            {
-                return new ErrorResult(Messages.ErrorMessage);
-            }
-
             _userDal.Add(entity);
 
             return new SuccessResult(Messages.EntityAdded);

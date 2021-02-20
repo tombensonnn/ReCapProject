@@ -24,13 +24,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental entity)
         {
-
-            if (entity.ReturnDate == null)
-            {
-                return new ErrorResult(Messages.ErrorMessage);
-            }
-
-
             _rentalDal.Add(entity);
 
             return new SuccessResult(Messages.EntityAdded);

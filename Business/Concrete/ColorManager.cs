@@ -24,11 +24,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color entity)
         {
-            if (entity.ColorName.Length<2)
-            {
-                return new ErrorResult(Messages.ErrorMessage);
-            }
-
             _colorDal.Add(entity);
 
             return new SuccessResult(Messages.EntityAdded);
