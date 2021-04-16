@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class BrandManager : IBrandService
+    public class BrandManager : IBaseService
     {
 
         IBrandDal _brandDal;

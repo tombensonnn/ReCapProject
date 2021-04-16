@@ -13,9 +13,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        IBrandService _brandService;
+        IBaseService _brandService;
 
-        public BrandsController(IBrandService brandService)
+        public BrandsController(IBaseService brandService)
         {
             _brandService = brandService;
         }

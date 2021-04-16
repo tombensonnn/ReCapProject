@@ -13,5 +13,6 @@ namespace Business.Constants
         public static string MaintenanceTime = "Sistem bakımda";
         public static string Listed = "Listelendi";
         public static string ErrorMessage = "Girdiğiniz veriler istenenlere uymuyor. Lütfen tekrar deneyiniz.";
+        public static string ImageLimitExceeded = "Resim yükleme limitinin üstüne çıktınız. Lütfen yüklediğiniz resim sayısının 5 ten az olmasına dikkat ediniz.";
     }
 }
